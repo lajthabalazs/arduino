@@ -20,7 +20,7 @@
 #define L_2_G 18
 #define L_2_B 19
 
-int data[9][9];
+int pixelData[9][9];
 int bases[9];
 int layers[9];
 
@@ -63,27 +63,51 @@ void setup() {
   bases[5] = B_1_2;  
   bases[6] = B_2_0;
   bases[7] = B_2_1;
-  bases[8] = B_2_2;  
-  showTestPattern();
+  bases[8] = B_2_2;
   ICSC.begin(3, 115200);
-  ICSC.registerCommand('R', &receivePacket);
+  ICSC.registerCommand('T', &receiveTestPatternCommand);
+  ICSC.registerCommand('C', &receiveClearCommand);
+  ICSC.registerCommand('D', &receiveDataCommand);
+  ICSC.registerCommand('R', &receiveRandomCommand);
+  runInitSequence();
 }
 
 void loop() {
   ICSC.process();
+  refresh();
+}
+
+void resetData () {
+  for (int base = 0; base < 9; base++) {
+    for (int layer = 0; layer < 9; layer++) {
+      pixelData[layer][base] = 0;
+    }
+  }
+  refresh();  
+}
+
+void mDelay(int forDelay) {
+  long start = millis();
+  while (start + forDelay > millis()) {
+    refresh();
+  }
+}
+
+void refresh() {
   for (int layer = 0; layer < 9; layer++) {
-  clear();
+    clearLeds();
+    digitalWrite(layers[layer],HIGH);
     for (int base = 0; base < 9; base++) {
-      if (data[base][layer] != 0) {
+      if (pixelData[layer][base] != 0) {
         digitalWrite(bases[base], LOW);
-        digitalWrite(layers[layer],HIGH);
       }
     }
-    delay(1);
+    for (int i = 0; i < 100; i++) {
+    }
   }
 }
   
-void clear () {
+void clearLeds () {
   for (int base = 0; base < 9; base++) {
     digitalWrite(bases[base], HIGH);
   }
@@ -92,44 +116,130 @@ void clear () {
   }
 }
 
-void receivePacket(unsigned char source, char command, unsigned char length, char *data) {
-  // TODO do stuff
+void receiveTestPatternCommand(unsigned char source, char command, unsigned char length, char *data) {
+  showTestPattern();
+}
+
+void receiveClearCommand(unsigned char source, char command, unsigned char length, char *data) {
+  resetData();
+}
+
+void receiveDataCommand(unsigned char source, char command, unsigned char length, char *data) {
+  if (length > 0) {
+    for (int i = 0; i < 27 && i < length; i++) {
+      char color = data[i];
+      int layer = (i / 9) * 3;
+      int base = i - layer * 3;
+      pixelData[layer][base] = 0;
+      pixelData[layer + 1][base] = 0;
+      pixelData[layer + 1][base] = 0;
+      if (color == 'R') {
+        pixelData[layer][base] = 1;
+      } else if (color == 'G') {
+        pixelData[layer + 1][base] = 1;
+      } else if (color == 'B') {
+        pixelData[layer + 2][base] = 1;
+      }
+    }
+  }
+}
+
+void runInitSequence() {
+  showTestPattern();
+  mDelay(1000);
+  resetData();
+  mDelay(200);
+  for (int i = 0; i < 5; i++) {
+    showTestPattern();
+    mDelay(200);
+    resetData();
+    mDelay(200);
+  }
+  for (int i = 0; i < 30; i++) {
+    lightUpRandom(5);
+    mDelay(50);
+  }
+  for (int i = 0; i < 30; i++) {
+    switchOffRandom(5);
+    mDelay(50);
+  }
+  resetData();
+}
+
+void receiveRandomCommand(unsigned char source, char command, unsigned char length, char *data) {
+  if (length > 0) {
+    int count = data[0];
+    flickRandom(abs(count));
+  }
 }
 
 void showTestPattern() {
-  data[0][0] = 1;
-  data[1][0] = 1;
-  data[2][0] = 1;
+  resetData();
+  pixelData[0][0] = 1;
+  pixelData[0][1] = 1;
+  pixelData[0][2] = 1;
 
-  data[3][1] = 1;
-  data[4][1] = 1;
-  data[5][1] = 1;
+  pixelData[1][3] = 1;
+  pixelData[1][4] = 1;
+  pixelData[1][5] = 1;
 
-  data[6][2] = 1;
-  data[7][2] = 1;
-  data[8][2] = 1;
+  pixelData[2][6] = 1;
+  pixelData[2][7] = 1;
+  pixelData[2][8] = 1;
 
-  data[0][3] = 1;
-  data[3][3] = 1;
-  data[6][3] = 1;
+  pixelData[3][0] = 1;
+  pixelData[3][3] = 1;
+  pixelData[3][6] = 1;
 
-  data[1][4] = 1;
-  data[4][4] = 1;
-  data[7][4] = 1;
+  pixelData[4][1] = 1;
+  pixelData[4][4] = 1;
+  pixelData[4][7] = 1;
 
-  data[2][5] = 1;
-  data[5][5] = 1;
-  data[8][5] = 1;
+  pixelData[5][2] = 1;
+  pixelData[5][5] = 1;
+  pixelData[5][8] = 1;
 
-  data[0][6] = 1;
-  data[1][6] = 1;
-  data[2][6] = 1;
+  pixelData[6][0] = 1;
+  pixelData[6][1] = 1;
+  pixelData[6][2] = 1;
 
-  data[3][7] = 1;
-  data[4][7] = 1;
-  data[5][7] = 1;
+  pixelData[7][3] = 1;
+  pixelData[7][4] = 1;
+  pixelData[7][5] = 1;
 
-  data[6][8] = 1;
-  data[7][8] = 1;
-  data[8][8] = 1;  
+  pixelData[8][6] = 1;
+  pixelData[8][7] = 1;
+  pixelData[8][8] = 1; 
+  refresh();  
+}
+
+void flickRandom(int number) {
+  for (int i =0; i < number; i++) {
+    int layer = random(0,9);
+    int base = random(0,9);
+    if (pixelData[layer][base] == 0) {
+      pixelData[layer][base] = 1;
+    } else {
+      pixelData[layer][base] = 0;
+    }
+  }
+  refresh();
+}
+
+void lightUpRandom(int number) {
+  for (int i =0; i < number; i++) {
+    int layer = random(0,9);
+    int base = random(0,9);
+    pixelData[layer][base] = 1;
+  }
+  refresh();
+}
+
+void switchOffRandom(int number) {
+  for (int i =0; i < number; i++) {
+    int layer = random(0,9);
+    int base = random(0,9);
+    pixelData[layer][base] = 0;
+  }
+  refresh();
 }
