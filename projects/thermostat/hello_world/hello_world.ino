@@ -8,8 +8,27 @@
 
 #define TIME_MSG_LEN  11   // time sync to PC is HEADER followed by unix time_t as ten ascii digits
 #define TIME_HEADER  'T'   // Header tag for serial time sync message
+#define versionCode "v0.7.0"
 
-#define versionCode "v0.6.6"
+enum State { Display, SetTime };
+State state = Display;
+
+/* ******************* */
+/* ****** SET TIME *** */
+/* ******************* */
+int cursorPosition = 0;
+int yearFirst = 0;
+int yearSecond = 0;
+int yearThird = 0;
+int yearFourth = 0;
+int monthFirst = 0;
+int monthSecond = 0;
+int dayFirst = 0;
+int daySecond = 0;
+int hoursFirst = 0;
+int hoursSecond = 0;
+int minutesFirst = 0;
+int minutesSecond = 0;
 
 OneWire thermometer(7); // ds18s20 thermometer
 LiquidCrystal lcd(13, 12, 3, 8, 9, 10, 11);
@@ -35,7 +54,7 @@ byte colPins[cols] = {
   A1,A2,A3,2}; // Digital 13 and analog 6-7 are not good pins to use.
 
 char key;
-int keypress = 0;
+char lastKey = 0;
 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, rows, cols);
 
@@ -49,15 +68,6 @@ void setup() {
   else {
     Serial.println("RTC has set the system time");
   }
-  // Set up clock
-  /*
-  time_t t = processSyncMessage();
-   if(t >0)
-   {
-   RTC.set(t);   // set the RTC and the system time to the received value
-   setTime(t);          
-   }
-   */
   thermoSetup();
 }
 
@@ -75,30 +85,193 @@ void refreshDisplay() {
   if (int(key) != 0) {
     lcd.setCursor(0,3);
     lcd.print(key);
+    lastKey = key;
   }
+  updateState();
   lcd.setCursor(0, 0);
   lcd.print("Thermometer ");
   lcd.print(versionCode);
-  lcd.setCursor(0, 1);
-  // TIME
-  int h = hour();
-  int m = minute();
-  int s = second();
-  if(h < 10)
-    lcd.print('0');
-  lcd.print(h);
-  lcd.print(":");
-  if(m < 10)
-    lcd.print('0');
-  lcd.print(m);
-  lcd.print(":");  
-  if(s < 10)
-    lcd.print('0');
-  lcd.print(s);
   // Temperature
   lcd.setCursor(0, 2);
   lcd.print(temperature);
-  lcd.print(" C");  
+  lcd.print(" C");
+  if (state == Display) {
+    displayTime();
+  } else if (state == SetTime){
+    displaySetTime();
+  }
+}
+
+void updateState() {
+  if (state == Display && lastKey == 'A') {
+    state = SetTime;
+    lastKey = 0;
+  }
+  if (state == SetTime) {
+    if (lastKey != 0){
+      Serial.print("Last Key ");
+      Serial.println(lastKey);
+    }
+    if (lastKey == 'D') {
+      state = Display;
+      lastKey = 0;
+      return;
+    }
+    int inputValue = lastKey - '0';
+    if (inputValue < 10 && inputValue > -1) {
+      switch(cursorPosition){
+        // YEAR
+        case 0:
+          yearFirst = inputValue;
+          cursorPosition++;
+          break;
+        case 1:
+          yearSecond = inputValue;
+          cursorPosition++;
+          break;
+        case 2:
+          yearThird = inputValue;
+          cursorPosition++;
+          break;
+        case 3:
+          yearFourth = inputValue;
+          cursorPosition++;
+          break;
+        // MONTH
+        case 4:
+          if (inputValue < 2) {
+            monthFirst = inputValue;
+            cursorPosition++;
+          }
+          break;
+        case 5:
+          if ((hoursFirst < 1) || inputValue < 3) {
+            monthSecond = inputValue;
+            cursorPosition++;
+          }
+          break;
+        // DAY
+        case 6:
+          if (inputValue < 4) {
+            dayFirst = inputValue;
+            cursorPosition++;
+          }
+          break;
+        case 7:
+          if ((hoursFirst < 3) || inputValue < 2) {
+            daySecond = inputValue;
+            cursorPosition++;
+          }
+          break;
+        
+        case 8:
+          if (inputValue < 3) {
+            hoursFirst = inputValue;
+            cursorPosition++;
+          }
+          break;
+        case 9:
+          if ((hoursFirst < 2) || inputValue < 4) {
+            hoursSecond = inputValue;
+            cursorPosition++;
+          }
+          break;
+        case 10:
+          if (inputValue < 6) {
+            minutesFirst = inputValue;
+            cursorPosition++;
+          }
+          break;
+        case 11:
+          minutesSecond = inputValue;
+          setTime(yearFirst * 1000 + yearSecond * 100 + yearThird*10 + yearFourth, monthFirst * 10 + monthSecond, dayFirst * 10 + daySecond, hoursFirst * 10 + hoursSecond, minutesFirst * 10 + minutesSecond);
+          yearFirst = 0;
+          yearSecond = 0;
+          yearThird = 0;
+          yearFourth = 0;
+          monthFirst = 0;
+          monthSecond = 0;
+          dayFirst = 0;
+          daySecond = 0;
+          hoursFirst = 0;
+          hoursSecond = 0;
+          minutesFirst = 0;
+          minutesSecond = 0;
+          state = Display;
+          cursorPosition = 0;
+          break;
+      }
+      // Consume key
+      lastKey = 0;      
+    }
+  }
+}
+
+void displayTime() {
+  lcd.setCursor(0, 1);
+  int y = year();
+  int mo = month();
+  int d = day();
+  int h = hour();
+  int m = minute();
+  int s = second();
+  lcd.print(y);
+  if (y < 1000) {
+    lcd.print('0');
+    if (y < 100) {
+      lcd.print('0');
+      if (y < 10) {
+        lcd.print('0');
+      }
+    }
+  }
+  lcd.print('/');
+  if(mo < 10) {
+    lcd.print('0');
+  }
+  lcd.print(mo);
+  lcd.print('/');
+  if(d < 10) {
+    lcd.print('0');
+  }
+  lcd.print(d);
+  lcd.print(' ');
+
+  if(h < 10) {
+    lcd.print('0');
+  }
+  lcd.print(h);
+  lcd.print(":");
+  if(m < 10) {
+    lcd.print('0');
+  }
+  lcd.print(m);
+  lcd.print(":");  
+  if(s < 10) {
+    lcd.print('0');
+  }
+  lcd.print(s);
+}
+
+void displaySetTime() {
+  lcd.setCursor(0, 1);
+  lcd.print(yearFirst);
+  lcd.print(yearSecond);
+  lcd.print(yearThird);
+  lcd.print(yearFourth);
+  lcd.print("/");  
+  lcd.print(monthFirst);
+  lcd.print(monthSecond);
+  lcd.print("/");  
+  lcd.print(dayFirst);
+  lcd.print(daySecond);
+  lcd.print(" ");  
+  lcd.print(hoursFirst);
+  lcd.print(hoursSecond);
+  lcd.print(":");
+  lcd.print(minutesFirst);
+  lcd.print(minutesSecond);
+  lcd.print("   ");
 }
 
 /* *********** */
@@ -115,23 +288,9 @@ void digitalClockDisplay(){
   Serial.println(); 
 }
 
-time_t processSyncMessage() {
-  // return the time if a valid sync message is received on the serial port.
-  while(Serial.available() >=  TIME_MSG_LEN ){  // time message consists of a header and ten ascii digits
-    char c = Serial.read() ; 
-    Serial.print(c);  
-    if( c == TIME_HEADER ) {       
-      time_t pctime = 0;
-      for(int i=0; i < TIME_MSG_LEN -1; i++){   
-        c = Serial.read();          
-        if( c >= '0' && c <= '9'){   
-          pctime = (10 * pctime) + (c - '0') ; // convert digits to a number    
-        }
-      }   
-      return pctime; 
-    }  
-  }
-  return 0;
+void setTime(int year, int month, int day, int hours, int minutes) {
+  setTime(hours, minutes, 0, day, month, year);
+  RTC.set(now());
 }
 
 /* *********** */
@@ -143,8 +302,6 @@ byte thermoState = 0; // 0 before setup, 1 before read, 2 processing
 
 void runThermo() {
   if (nextThermoEvent < millis()) {
-    Serial.print("thermoState: ");
-    Serial.println(thermoState);
     nextThermoEvent = millis() + 1000;
     if (thermoState == 0) {
       thermoSetup();
