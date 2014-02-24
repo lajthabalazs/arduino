@@ -8,7 +8,7 @@
 
 #define TIME_MSG_LEN  11   // time sync to PC is HEADER followed by unix time_t as ten ascii digits
 #define TIME_HEADER  'T'   // Header tag for serial time sync message
-#define versionCode "v0.7.0"
+#define versionCode "v0.7.5"
 
 enum State { Display, SetTime };
 State state = Display;
@@ -17,6 +17,8 @@ State state = Display;
 /* ****** SET TIME *** */
 /* ******************* */
 int cursorPosition = 0;
+long cursorBlink = 0;
+boolean cursorBlinkState = true;
 int yearFirst = 0;
 int yearSecond = 0;
 int yearThird = 0;
@@ -72,7 +74,17 @@ void setup() {
 }
 
 void loop() {
+  // Get input from keypad
+  key = keypad.getKey();
+  if (int(key) != 0) {
+    // Cache input until processed
+    lastKey = key;
+  }
   runThermo();
+  if (cursorBlink < millis()) {
+    cursorBlink = millis() + 1000;
+    cursorBlinkState = !cursorBlinkState;
+  }
   refreshDisplay();
 }
 
@@ -81,12 +93,24 @@ void loop() {
 /* *********** */
 
 void refreshDisplay() {
-  key = keypad.getKey();
-  if (int(key) != 0) {
-    lcd.setCursor(0,3);
-    lcd.print(key);
-    lastKey = key;
+  lcd.setCursor(0,3);
+  long secs = millis()/1000;
+  lcd.print("Uptime ");
+  lcd.print(secs / 3600 / 24);
+  lcd.print('d');
+  int h = secs / 3600 % 24;
+  if (h < 10) {
+    lcd.print('0');
   }
+  lcd.print(h);
+  lcd.print('h');
+  int m = secs /60 % 60;
+  if (m < 10) {
+    lcd.print('0');
+  }
+  lcd.print(0);
+  lcd.print("m");
+  
   updateState();
   lcd.setCursor(0, 0);
   lcd.print("Thermometer ");
@@ -106,6 +130,18 @@ void updateState() {
   if (state == Display && lastKey == 'A') {
     state = SetTime;
     lastKey = 0;
+    yearFirst = year()/1000;
+    yearSecond = year()/100 % 10;
+    yearThird = year()/10 % 10;
+    yearFourth = year() % 10;
+    monthFirst = month()/10;
+    monthSecond = month() % 10;
+    dayFirst = day()/10;
+    daySecond = day()%10;
+    hoursFirst = hour()/10;
+    hoursSecond = hour()%10;
+    minutesFirst = minute()/10;
+    minutesSecond = minute()%10;
   }
   if (state == SetTime) {
     if (lastKey != 0){
@@ -115,10 +151,13 @@ void updateState() {
     if (lastKey == 'D') {
       state = Display;
       lastKey = 0;
+      resetEdit();
       return;
     }
     int inputValue = lastKey - '0';
     if (inputValue < 10 && inputValue > -1) {
+      Serial.print("Got a number ");
+      Serial.println(inputValue);
       switch(cursorPosition){
         // YEAR
         case 0:
@@ -185,26 +224,43 @@ void updateState() {
         case 11:
           minutesSecond = inputValue;
           setTime(yearFirst * 1000 + yearSecond * 100 + yearThird*10 + yearFourth, monthFirst * 10 + monthSecond, dayFirst * 10 + daySecond, hoursFirst * 10 + hoursSecond, minutesFirst * 10 + minutesSecond);
-          yearFirst = 0;
-          yearSecond = 0;
-          yearThird = 0;
-          yearFourth = 0;
-          monthFirst = 0;
-          monthSecond = 0;
-          dayFirst = 0;
-          daySecond = 0;
-          hoursFirst = 0;
-          hoursSecond = 0;
-          minutesFirst = 0;
-          minutesSecond = 0;
-          state = Display;
-          cursorPosition = 0;
+          resetEdit();
           break;
       }
       // Consume key
-      lastKey = 0;      
+    } else if (lastKey == '*') {
+      Serial.print("Got a star ");
+      if (cursorPosition > 0) {
+        cursorPosition--;
+      }
+    } else if (lastKey == '#') {
+      Serial.print("Got a hashmark ");
+      if (cursorPosition < 11) {
+        cursorPosition++;
+      } else {
+        setTime(yearFirst * 1000 + yearSecond * 100 + yearThird*10 + yearFourth, monthFirst * 10 + monthSecond, dayFirst * 10 + daySecond, hoursFirst * 10 + hoursSecond, minutesFirst * 10 + minutesSecond);
+        resetEdit();
+      }
     }
+    lastKey = 0;
   }
+}
+
+void resetEdit() {
+  yearFirst = 0;
+  yearSecond = 0;
+  yearThird = 0;
+  yearFourth = 0;
+  monthFirst = 0;
+  monthSecond = 0;
+  dayFirst = 0;
+  daySecond = 0;
+  hoursFirst = 0;
+  hoursSecond = 0;
+  minutesFirst = 0;
+  minutesSecond = 0;
+  state = Display;
+  cursorPosition = 0;
 }
 
 void displayTime() {
@@ -255,22 +311,70 @@ void displayTime() {
 
 void displaySetTime() {
   lcd.setCursor(0, 1);
-  lcd.print(yearFirst);
-  lcd.print(yearSecond);
-  lcd.print(yearThird);
-  lcd.print(yearFourth);
+  if (cursorBlinkState && cursorPosition == 0) { 
+    lcd.print("_");
+  } else {
+    lcd.print(yearFirst);
+  }
+  if (cursorBlinkState && cursorPosition == 1) { 
+    lcd.print("_");
+  } else {
+    lcd.print(yearSecond);
+  }
+  if (cursorBlinkState && cursorPosition == 2) { 
+    lcd.print("_");
+  } else {
+    lcd.print(yearThird);
+  }
+  if (cursorBlinkState && cursorPosition == 3) { 
+    lcd.print("_");
+  } else {
+    lcd.print(yearFourth);
+  }
   lcd.print("/");  
-  lcd.print(monthFirst);
-  lcd.print(monthSecond);
+  if (cursorBlinkState && cursorPosition == 4) { 
+    lcd.print("_");
+  } else {
+    lcd.print(monthFirst);
+  }
+  if (cursorBlinkState && cursorPosition == 5) { 
+    lcd.print("_");
+  } else {
+    lcd.print(monthSecond);
+  }
   lcd.print("/");  
-  lcd.print(dayFirst);
-  lcd.print(daySecond);
+  if (cursorBlinkState && cursorPosition == 6) { 
+    lcd.print("_");
+  } else {
+    lcd.print(dayFirst);
+  }
+  if (cursorBlinkState && cursorPosition == 7) { 
+    lcd.print("_");
+  } else {
+    lcd.print(daySecond);
+  }
   lcd.print(" ");  
-  lcd.print(hoursFirst);
-  lcd.print(hoursSecond);
+  if (cursorBlinkState && cursorPosition == 8) { 
+    lcd.print("_");
+  } else {
+    lcd.print(hoursFirst);
+  }
+  if (cursorBlinkState && cursorPosition == 9) { 
+    lcd.print("_");
+  } else {
+    lcd.print(hoursSecond);
+  }
   lcd.print(":");
-  lcd.print(minutesFirst);
-  lcd.print(minutesSecond);
+  if (cursorBlinkState && cursorPosition == 10) { 
+    lcd.print("_");
+  } else {
+    lcd.print(minutesFirst);
+  }
+  if (cursorBlinkState && cursorPosition == 11) { 
+    lcd.print("_");
+  } else {
+    lcd.print(minutesSecond);
+  }
   lcd.print("   ");
 }
 
