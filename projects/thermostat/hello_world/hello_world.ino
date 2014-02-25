@@ -108,7 +108,7 @@ void refreshDisplay() {
   if (m < 10) {
     lcd.print('0');
   }
-  lcd.print(0);
+  lcd.print(m);
   lcd.print("m");
   
   updateState();
