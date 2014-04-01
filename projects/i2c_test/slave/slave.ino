@@ -27,10 +27,12 @@ void loop() {
         delay (500);
         digitalWrite(LED_PIN, LOW);  
     }
+    x = -1;
   }
-  x = -1;
+  delay (100);
 }
 
 void receiveEvent(int howMany) {
+  x = 0;
   x = Wire.read();    // receive byte as an integer
 }
