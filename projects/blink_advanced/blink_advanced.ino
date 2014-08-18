@@ -7,8 +7,8 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() {
   for (int i = 0; i < 16; i++) {
-  Serial.print("Probing led ");
-  Serial.println(i);
+    Serial.print("Probing led ");
+    Serial.println(i);
     digitalWrite(i, HIGH);
     delay(100);
     digitalWrite(i, LOW);
