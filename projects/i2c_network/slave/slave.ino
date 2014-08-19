@@ -11,6 +11,7 @@
 
 TM1637Display display(CLK, DIO);
 int address = 0;
+boolean waitingForAddress = false;
 int data = 0;
 boolean buttonPressed = false;
 long lastButtonEventTime = 0;
@@ -29,14 +30,17 @@ void loop()
 {
   if (checkButton() && address == 0) {
     // Send request to master
+    Serial.println("Address requested");
+    waitingForAddress = true;
+    delay(10);
     Wire.beginTransmission(30);
     Wire.write(77);
     Wire.endTransmission();
-    Serial.println("Request sent");
+    Serial.println("Sent address request");
   }
   // Show decimal numbers with/without leading zeros
   display.showNumberDec(address * 100 + data, true, 4, 0);
-  delay(1);
+  delay(10);
 }
 
 int checkButton()
@@ -62,11 +66,18 @@ void clearDisplay() {
 
 void receiveAddress(int howMany)
 {
+  int receivedAddress = Wire.read();    // receive byte as an integer
   Serial.println("Address received");
-  address = Wire.read();    // receive byte as an integer
-  Serial.println(address);
-  Wire.begin(address); // Start I2C Bus as Master
-  Wire.onReceive(receiveMessage); // register event  
+  if (waitingForAddress) {
+    waitingForAddress = false;
+    address = receivedAddress;
+    Serial.println("My address");
+    Serial.println(address);
+    Wire.begin(address); // Start I2C Bus as Master
+    Wire.onReceive(receiveMessage); // register event  
+  } else {
+    Serial.println("Not my address");
+  }
 }
 
 void receiveMessage(int howMany)
