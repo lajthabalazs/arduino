@@ -35,9 +35,6 @@ int minutesSecond = 0;
 OneWire thermometer(7); // ds18s20 thermometer
 LiquidCrystal lcd(13, 12, 3, 8, 9, 10, 11);
 byte present = 0;
-byte data[12];
-byte addr[8];
-float temperature = 0;
 
 // Keypad
 const byte rows = 4;
@@ -400,6 +397,10 @@ void setTime(int year, int month, int day, int hours, int minutes) {
 /* *********** */
 /* THERMOMETER */
 /* *********** */
+
+byte data[12];
+byte addr[8];
+float temperature = 0;
 
 long nextThermoEvent = 0;
 byte thermoState = 0; // 0 before setup, 1 before read, 2 processing

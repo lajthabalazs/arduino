@@ -1,0 +1,100 @@
+Handle,Title,Body (HTML),Vendor,Type,Tags,Published,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Option3 Name,Option3 Value,Variant SKU,Variant Grams,Variant Inventory Tracker,Variant Inventory Qty,Variant Inventory Policy,Variant Fulfillment Service,Variant Price,Variant Compare At Price,Variant Requires Shipping,Variant Taxable,Variant Barcode,Image Src,Image Alt Text,Gift Card,SEO Title,SEO Description,Google Shopping / Google Product Category,Google Shopping / Gender,Google Shopping / Age Group,Google Shopping / MPN,Google Shopping / AdWords Grouping,Google Shopping / AdWords Labels,Google Shopping / Condition,Google Shopping / Custom Product,Google Shopping / Custom Label 0,Google Shopping / Custom Label 1,Google Shopping / Custom Label 2,Google Shopping / Custom Label 3,Google Shopping / Custom Label 4,Variant Image
+tavolsagmero,Távolságmérő,Távolságmérő leírás,arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,400.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+ledek,Színes LEDek,"<p>Hagyományos LEDek. A készlet a megfelelő előtét ellenállásokat, melynek segítségével 5V-os tápról biztonságosan működtethetőek.</p>
+<p>A csomag tartalma:</p>
+<p>- 12 furatszerelt LED</p>
+<p><span>- 12 ellenállás</span></p>",arduino.shop,component,LED,true,Color,Piros,,,,,"",0,,1,deny,manual,210.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+ledek,,,,,,,,Kék,,,,,"",0,,1,deny,manual,210.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+ledek,,,,,,,,Zöld,,,,,"",0,,1,deny,manual,210.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+ledek,,,,,,,,Sárga,,,,,"",0,,1,deny,manual,210.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+ledek,,,,,,,,Narancs,,,,,"",0,,1,deny,manual,210.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+ledek,,,,,,,,RGB,,,,,"",0,,1,deny,manual,1050.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+ledek,,,,,,,,Fehér,,,,,"",0,,1,deny,manual,210.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+soros-bluetooth-modul,Soros Bluetooth modul,Arduino-hoz illeszthető Bluetooth modul.,arduino.shop,component,kommunikáció,true,Title,Default Title,,,,,"",0,,1,deny,manual,2400.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+simon-says-1,Simon Says,"<p>Építsd meg a nagy sikerű klasszikus memóriajáték Arduino alapú változatát!</p>
+<p>Négy zóna, négy hang, a többit a te kreativitásodra bízzuk!</p>
+<p>A készlet minden alkotóelemet tartalmaz.</p>",arduino.shop,kit,"",true,Title,3D nyomtatott házzal és programozóval,,,,,"",0,,1,deny,manual,6500.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+simon-says-1,,,,,,,,"3D nyomtatott házzal, programozó nélkül",,,,,"",0,,1,deny,manual,5500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+simon-says-1,,,,,,,,Ház és programozó nélkül,,,,,"",0,,1,deny,manual,4500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+rotary-encoder,Rotary encoder,Relatív elfordulást érzékelő kapcsoló.,arduino.shop,component,input eszköz,true,Title,Default Title,,,,,"",0,,1,deny,manual,720.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+nyomas-erzekelo,Rezgésérzékelő,12mm-es piezo rezgésérzékelő korong,arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,210.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+prototipus-panel-5x7cm,Prototípus panel 5x7cm,"",arduino.shop,tools,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,180.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+probapanel-830-erintkezos,"Próbapanel, 830 érintkezős",Nagyobb kapcsolások építéséhez néha több helyre van szükség. Ezen a panelen akár Arduino hálózatok is tesztelhetőek.,arduino.shop,tools,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,1350.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+probapanel-400-erintkezos-atlatszo,Próbapanel 400 érintkezős - átlátszó,Átlátszó próbapanel nagyobb kapcsolások építéséhez. És átlátszó!,arduino.shop,tools,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,1150.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+valos-ideju-ora,Óra modul,"<p>Valós idejű óra I2C protokollon keresztül illeszhető. 32K memóriával.</p>
+<p>Tartalmazza az elemet.</p>",arduino.shop,component,egyéb,true,Title,Default Title,,,,,"",0,,1,deny,manual,950.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+nyomogombok,Nyomógombok,"12db nyomógomb, nyomásra zárják az áramkört.",arduino.shop,component,input eszköz,true,Title,Default Title,,,,,"",0,,1,deny,manual,320.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+multimeter,Multi-multi méter,"<p>Használd saját eszközeidet! Kapcsolások építésénél. ellenőrzésénél gyakran van szükség multiméterre: rövidzárat keresni, megmérni egy ellenállást, vagy megnézni, hogy van-e feszültség két pont közt. Ebből a kitből megépíthető egy egyszerű multiméter, ami hasznos segítőtárs lesz a további építések során.</p>
+<p>Ez a multiméter nem csak ellenállás és feszültség mérésére alkalmas, de segítségével tesztelheted LED-ek és tranzisztorok működését is! Más eszközre nem is lesz szükséged.</p>",arduino.shop,kit,"",true,Title,3D nyomtatott házzal és programozóval,,,,,"",0,,1,deny,manual,6500.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+multimeter,,,,,,,,"3D nyomtatott házzal, programozó nélkül",,,,,"",0,,1,deny,manual,5500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+multimeter,,,,,,,,Ház és programozó nélkül,,,,,"",0,,1,deny,manual,4500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+mozgaserzekelo,Mozgásérzékelő,"Infravörös mozgásérzékelő, 7 méters hatótávolsággal.",arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,650.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+mini-probapanel-170-erintkezo,Mini próbapanel - 170 érintkező,Apró próbapanelek egyszerű kapcsolásokhoz. Kis méretük folytán kisebb eszközökbe is beépíthetőek. Nincsen rajtuk oldalsó busz.,arduino.shop,tools,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,450.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+micro-szervo-motor,Micro szervo motor,"",arduino.shop,component,motor,true,Title,Default Title,,,,,"",0,,1,deny,manual,1100.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+magnesesseg-erzekelo,Mágnesesség érzékelő / iránytű,Digitális három tengelyes mágnesesség érzékelő.,arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,720.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+magas-fenyereju-led-csomag,Magas fényerejű LED-ek,"<p>Magas fényerejű LED-ek. A készlet a megfelelő előtét ellenállásokat, melynek segítségével 5V-os tápról biztonságosan működtethetőek.</p>
+<p>A csomag tartalma:</p>
+<p>- 12 furatszerelt LED</p>
+<p><span>- 12 ellenállás</span></p>",arduino.shop,component,LED,true,Color,Piros,,,,,"",0,,1,deny,manual,390.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+magas-fenyereju-led-csomag,,,,,,,,Kék,,,,,"",0,,1,deny,manual,850.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+magas-fenyereju-led-csomag,,,,,,,,Zöld,,,,,"",0,,1,deny,manual,610.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+magas-fenyereju-led-csomag,,,,,,,,Sárga,,,,,"",0,,1,deny,manual,390.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+magas-fenyereju-led-csomag,,,,,,,,Narancs,,,,,"",0,,1,deny,manual,630.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+magas-fenyereju-led-csomag,,,,,,,,RGB,,,,,"",0,,1,deny,manual,1990.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+magas-fenyereju-led-csomag,,,,,,,,Fehér,,,,,"",0,,1,deny,manual,490.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+lepteto-motor,Léptető motor,"",arduino.shop,component,motor,true,Title,Default Title,,,,,"",0,,1,deny,manual,1200.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+legnyomas-mero,Légnyomás mérő,<span>BMP180 típusú digitális légnyomásmérő.</span>,arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,1100.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+led-keszlet,LED csomag,"<p>Nehéz elektronikai eszközt találni, amiben nincs egyetlen LED sem. LED-eket használhatjuk egyszerű visszajelzésekhez, adatmegjelenítésre vagy a nagyobb fényerejű LED-eket akár világításra is.</p>
+<p>Ebben a készletben kis fényerejű LED-eket gyűjtöttünk össze különböző színekben. A színes világítótest előnye a szórtabb fény, és építés közben az egyszerű megkülönböztethetőség. A készlet minden színhez tartalmazza a megfelelő előtét ellenállást, melynek segítségével 5V-os tápról biztonságosan működtethetőek.</p>
+<p>A csomag tartalma:</p>
+<p>- 12 piros furatszerelt LED</p>
+<p>- 12 kék <span>furatszerelt </span>LED</p>
+<p>- 12 zöld <span>furatszerelt </span>LED</p>
+<p>- 12 sárga <span>furatszerelt </span>LED</p>
+<p>- 12 fehér <span>furatszerelt </span>LED</p>
+<p>-  A LED-ek nyitófeszültségének megfelelő ellenállás</p>
+<p>- Tárolódoboz</p>",arduino.shop,component,LED,true,Title,Default Title,,,,,"",0,,1,deny,manual,2390.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+infravoros-taviranyito,Infravörös távirányító,Arduino-hoz illeszthető érzékelő és hozzá tartozó távirányító.,arduino.shop,component,input eszköz,true,Title,Default Title,,,,,"",0,,1,deny,manual,1260.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+idojaras-allomas,Időjárás-állomás,"<p>Hőmérséklet, páratartalom, légnyomás, mérőállomásod ezeket mind képes leszel mérni, megjeleníteni, és kis programozással előre jelezheted az időjárást is.</p>
+<p>Figyelem, az időjárás állomás nem vízálló, ennek megfelelően kell elhelyezni.</p>",arduino.shop,kit,"",true,Title,3D nyomtatott házzal és programozóval,,,,,"",0,,1,deny,manual,6500.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+idojaras-allomas,,,,,,,,"3D nyomtatott házzal, programozó nélkül",,,,,"",0,,1,deny,manual,5500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+idojaras-allomas,,,,,,,,Ház és programozó nélkül,,,,,"",0,,1,deny,manual,4500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+hang-vizualizalo,Hang vizualizáló,"<p>Használd saját eszközeidet! Kapcsolások építésénél. ellenőrzésénél gyakran van szükség multiméterre: rövidzárat keresni, megmérni egy ellenállást, vagy megnézni, hogy van-e feszültség két pont közt. Ebből a kitből megépíthető egy egyszerű multiméter, ami hasznos segítőtárs lesz a további építések során.</p>
+<p>Ez a multiméter nem csak ellenállás és feszültség mérésére alkalmas, de segítségével tesztelheted LED-ek és tranzisztorok működését is! Más eszközre nem is lesz szükséged.</p>",arduino.shop,kit,"",true,Title,3D nyomtatott házzal és programozóval,,,,,"",0,,1,deny,manual,6500.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+hang-vizualizalo,,,,,,,,"3D nyomtatott házzal, programozó nélkül",,,,,"",0,,1,deny,manual,5500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+hang-vizualizalo,,,,,,,,Ház és programozó nélkül,,,,,"",0,,1,deny,manual,4500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+hang-erzekelo,Hang érzékelő,Állítható érzékenységű hangérzékelő.,arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,590.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+forrasztopaka,Forrasztópáka,"",arduino.shop,tools,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,2490.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+forraszto-keszlet,Forrasztó készlet,"",arduino.shop,arduino,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,6990.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+fenyerzekelo,Fényérzékelők,"Analóg fotorezisztor, 4db / csomag.",arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,210.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+ethernet-shield,Ethernet shield,"W5100 Ethernet illesztő, SD kártya olvasóval, SPI illesztőfelületen keresztül. 4 párhuzamos kapcsolat kezelésére képes.",arduino.shop,component,kommunikáció,true,Title,Default Title,,,,,"",0,,1,deny,manual,3500.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+erintes-erzekelo,Érintés-érzékelő,Digitális érintésérzékelő.,arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,650.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+ellenallas-keszlet,Ellenállás-készlet,"<p>10-10 furatszerelt ellenállás a leggyakrabban használt értékekből: <span>10Ω, </span><span>22Ω,</span> <span>47Ω,</span> <span>100Ω, </span><span>200Ω,</span> 1<span>KΩ,</span> <span>4.7KΩ,</span> <span>10KΩ,</span> <span>100KΩ,</span> <span>1M</span></p>",arduino.shop,component,egyéb,true,Title,Default Title,,,,,"",0,,1,deny,manual,290.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+elektronikus-dobokocka,Elektronikus dobókocka,"Ezzel a készlettel nem csak egy, de akár négy dobókockát is építhetsz, minden a programozáson múlik. És ha ügyes vagy, készíthetsz magadnak cinkelt kockát is.",arduino.shop,kit,"",true,Title,3D nyomtatott házzal és programozóval,,,,,"",0,,1,deny,manual,6500.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+elektronikus-dobokocka,,,,,,,,"3D nyomtatott házzal, programozó nélkül",,,,,"",0,,1,deny,manual,5500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+elektronikus-dobokocka,,,,,,,,Ház és programozó nélkül,,,,,"",0,,1,deny,manual,4500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+ebresztoora,Ébresztőóra,"<p>Minden éjjeliszekrény méltó kiegészítője. Készítsd el saját ébresztőórádat, éjszakai üzemmóddal, hangérzékeny háttérvilágítással, riasztó feloldó kóddal. Építsd meg és programozd a te igényeidhez.</p>",arduino.shop,kit,"",true,Title,3D nyomtatott házzal és programozóval,,,,,"",0,,1,deny,manual,6500.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+ebresztoora,,,,,,,,"3D nyomtatott házzal, programozó nélkül",,,,,"",0,,1,deny,manual,5500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+ebresztoora,,,,,,,,Ház és programozó nélkül,,,,,"",0,,1,deny,manual,4500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+digitalis-radio-ado-vevo,Digitális rádió adó-vevő,<span>NRF24L01+ rádiomodul.</span>,arduino.shop,component,kommunikáció,true,Title,Default Title,,,,,"",0,,1,deny,manual,420.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+digitalis-homero,Digitális hőmérő,"<span>DS18B20 típusú digitális hőmérő. 1-Wire illesztőfelülettel, 0.5C fokos pontossággal.</span>",arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,460.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+digitalis-gyorsulasmero,Digitális gyorsulásmérő,Digitális három tengelyes gyorsulás érzékelő.,arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,1300.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+buzzer,Buzzer,Hangkeltő eszköz.,arduino.shop,component,egyéb,true,Title,Default Title,,,,,"",0,,1,deny,manual,460.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+booster-tap,Booster táp,Tápláld kapcsolásaidat AA akkumulátorokról!,arduino.shop,component,tápegység,true,Title,Default Title,,,,,"",0,,1,deny,manual,690.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+binaris-faliora,Bináris óra,"A bináris óra nem csak elegáns kelléke bármelyik nappalinak, de állandó szellemi kihívás is.",arduino.shop,kit,"",true,Title,3D nyomtatott házzal és programozóval,,,,,"",0,,1,deny,manual,6500.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+binaris-faliora,,,,,,,,"3D nyomtatott házzal, programozó nélkül",,,,,"",0,,1,deny,manual,5500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+binaris-faliora,,,,,,,,Ház és programozó nélkül,,,,,"",0,,1,deny,manual,4500.00,,true,true,"",,,,,,,,,,,,,,,,,,,
+atmega8,Atmega8,"Az Atmega328 kistestvére, program memóriája mindössze 8kbyte, egyszerűbb alkalmazásokhoz azonban így is elegendő.",arduino.shop,arduino,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,550.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+atmega328,Atmega328,"<p>A legtöbb Arduino központi egysége, Ha próbapanelen összeraktad a kapcsolást és szeretnéd véglegesíteni, kisebb méretben, alacsonyabb áron megteheted ha csak a kontrollert építed be.</p>
+<p>Az Atmega328-ast Arduino bootloaderrel és beültető kerettel szállítjuk.</p>",arduino.shop,arduino,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,850.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+arduino-programozo,Arduino programozó,"",arduino.shop,tools,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,1190.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+arduino-nano,Arduino nano,"<p><span>Az Arduino Mini Pro vezérlője az Atmega328, mely azonos a legnépszerűbb Arduino, az Uno központi egységével. A kisebb mérete mellett ugyanazokkal a digitális és analóg kivezetésekkel rendelkezik, mint nagy testvére. Beépített USB vezérlője kényelmes prototepizálást tesz lehetővé, minden kiegészítő nélkül programozható.</span></p>",arduino.shop,arduino,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,1990.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+arduino-mini-pro,Arduino Mini Pro,"Az Arduino Mini Pro vezérlője az Atmega328, mely azonos a legnépszerűbb Arduino, az Uno központi egységével. Lényegesen kedvezőbb árát úgy tudta elérni, hogy nem tartalmaz USB vezérlőt. A kisebb mérete mellett ugyanazokkal a digitális és analóg kivezetésekkel rendelkezik, mint nagy testvére.",arduino.shop,arduino,"",true,Title,Default Title,,,,,"",0,,1,deny,manual,1290.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+analog-paratartalom-mero,Analóg páratartalom mérő,<span>HR202L típusú páratartalom mérő.</span>,arduino.shop,component,szenzor,true,Title,Default Title,,,,,"",0,,1,deny,manual,290.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+8x8-led-kijelzo,8x8 LED kijelző soros illeszővel,<span>MAX7219 chippel szerelt 8x8-as piros LED mátrix</span>,arduino.shop,component,kijelző,true,Title,Default Title,,,,,"",0,,1,deny,manual,1300.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+8x8-led-kijelzo-1,8x8 LED kijelző,<span>8x8-as piros LED mátrix</span>,arduino.shop,component,kijelző,true,Title,Default Title,,,,,"",0,,1,deny,manual,300.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+4xaa-elemtarto-doboz,4xAA elemtartó doboz,Elemtartó doboz 4 ceruzaelemhez.,arduino.shop,component,tápegység,true,Title,Default Title,,,,,"",0,,1,deny,manual,280.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+4x7-szegmenses-lcd-kijelzo,4x7 szegmenses LCD kijelző,"LCD kijelző piros világító szegmensekkel, kettősponttal, ideális órák, műszerek kijelzőjének.",arduino.shop,component,kijelző,true,Title,Default Title,,,,,"",0,,1,deny,manual,420.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+4x4-billentyuzet,4x4 billentyűzet,Membrán érzékelős billentyűzet.,arduino.shop,component,input eszköz,true,Title,Default Title,,,,,"",0,,1,deny,manual,420.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+16x2-karakteres-lcd-kijelzo,16x2 karakteres LCD kijelző,"LCD kijelző fehér karakterekkel és kék háttérvilágítással, párhuzamos vagy I2C illesztőfelölettel.",arduino.shop,component,kijelző,true,Title,Csak kijelző,,,,,"",0,,1,deny,manual,1100.00,,true,true,"",,,false,,,,,,,,,,,,,,,,
+16x2-karakteres-lcd-kijelzo,,,,,,,,Kijelző I2C modullal,,,,,"",0,,1,deny,manual,1650.00,,true,true,"",,,,,,,,,,,,,,,,,,,
