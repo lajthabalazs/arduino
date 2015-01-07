@@ -1,12 +1,12 @@
+int ledPin = 13;
 int upButtonPin = 4;
 int downButtonPin = 7;
 boolean upPressed = false;
 boolean downPressed = false;
-int value = 0;
+boolean ledOn = false;
 
 void setup()
 {
-  Serial.begin(9600);
   pinMode(upButtonPin, INPUT);
   digitalWrite(upButtonPin, HIGH);
   pinMode(downButtonPin, INPUT);
@@ -17,9 +17,7 @@ void loop()
 {
   if(digitalRead(upButtonPin) == LOW) {
     if (upPressed == false) {
-      value = value + 1;
-      Serial.print("Value incremented: ");
-      Serial.println(value);
+      ledOn = true;
     }
     upPressed = true;
   } else {
@@ -27,13 +25,16 @@ void loop()
   }
   if(digitalRead(downButtonPin) == LOW) {
     if (downPressed == false) {
-      value = value - 1;
-      Serial.print("Value decremented: ");
-      Serial.println(value);
+      ledOn = false;
     }
     downPressed = true;
   } else {
     downPressed = false;
   }
   delay(5);
+  if (ledOn) {
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
 }
