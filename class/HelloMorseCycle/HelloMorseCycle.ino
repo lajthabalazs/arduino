@@ -5,30 +5,16 @@ void setup() {
 }
 
 void loop() {
-  for (int i = 0; i < 3; i++) {
-    dot();
+  int signal[] = {1,1,1,3,3,3,1,1,1};
+  int pause[] = {1,1,3,1,1,3,1,1,7};
+  for (int i = 0; i < 9; i++) {
+    playSignal(signal[i], pause[i]);
   }
-  delay(200);
-  for (int i = 0; i < 3; i++) {
-    dash();
-  }
-  delay(200);
-  for (int i = 0; i < 3; i++) {
-    dot();
-  }
-  delay(600);
 }
 
-void dot() {
+void playSignal(int signal, int pause) {
   digitalWrite(led, HIGH);
-  delay(100);
+  delay(100 * signal);
   digitalWrite(led, LOW);
-  delay(100);
-}
-
-void dash() {
-  digitalWrite(led, HIGH);
-  delay(300);
-  digitalWrite(led, LOW);
-  delay(100);
+  delay(100 * pause);
 }
