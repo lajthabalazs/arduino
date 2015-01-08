@@ -7,7 +7,7 @@ int ledPin = 13;
 
 boolean upPressed = false;
 boolean downPressed = false;
-int value = 0;
+int target = 20;
 
 // Initialize thermostat
 OneWire oneWire(2);
@@ -30,7 +30,7 @@ void loop(void)
   for (int i =0; i < 100; i++) {
     if(digitalRead(upButtonPin) == LOW) {
       if (upPressed == false) {
-        value = value + 1;
+        // TODO increment target value
       }
       upPressed = true;
     } else {
@@ -38,9 +38,9 @@ void loop(void)
     }
     if(digitalRead(downButtonPin) == LOW) {
       if (downPressed == false) {
-        value = value - 1;
-        if (value < 0) {
-          value = 0;
+        // TODO decrement target value
+        if (target < 0) {
+          target = 0;
         }
       }
       downPressed = true;
@@ -86,10 +86,11 @@ byte digit[] ={ B00000001, // right segment
                 B10000000}; // left segment
 
 
-void displayValue(int value) {
-  if (value < 0) {
-    value = 0;
+void displayValue(int target, int temp) {
+  if (target < 0) {
+    target = 0;
   }
+  int value = target * 100 + temp;
   int digits[] = {value % 10, (value / 10) % 10, (value / 100) % 10, (value / 1000) % 10};
 
   long start = millis();

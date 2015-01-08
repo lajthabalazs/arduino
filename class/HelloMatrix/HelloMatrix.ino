@@ -1,6 +1,6 @@
 #include <LedControl.h>
 
-LedControl lc1=LedControl(12,11,10,1); 
+LedControl lc1=LedControl(12,11,10,9); 
 
 void setup() {
   // put your setup code here, to run once:
