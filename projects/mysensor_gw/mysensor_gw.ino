@@ -28,7 +28,6 @@ void loop()
     inputPos = 0;
   }
 }
-
 void serialEvent() {
   while (Serial.available()) {
     // get the new byte:
