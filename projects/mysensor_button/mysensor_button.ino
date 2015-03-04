@@ -26,7 +26,7 @@ void setup()
     if (address < 1 || address > 254) {
       Serial.print ("Address ");
       Serial.print (address);
-      Serial.print (" out of range...");
+      Serial.println (" out of range...");
       delay(500);
     } else {
       break;
@@ -36,7 +36,6 @@ void setup()
   Serial.println (address);
   node.setAddress(address);
   node.begin();
-  node.setAddress(address);
   node.present(SENSOR_ID_1, S_DOOR);
   node.present(SENSOR_ID_2, S_DOOR);
 
