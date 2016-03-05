@@ -617,6 +617,7 @@ void Config_PrintSettings(bool forReplay) {
     SERIAL_ECHOLNPGM("Maximum feedrates (mm/s):");
     SERIAL_ECHO_START;
   }
+  // TODO might comment out
   SERIAL_ECHOPAIR("  M203 X", max_feedrate[X_AXIS]);
   SERIAL_ECHOPAIR(" Y", max_feedrate[Y_AXIS]);
   SERIAL_ECHOPAIR(" Z", max_feedrate[Z_AXIS]);
